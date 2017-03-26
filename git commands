@@ -14,3 +14,15 @@ This will remove all local untracked files, so only git tracked files remain:
 
 git clean -fdx
 WARNING: -x will also remove all ignored files!
+
+New branches are created with the command
+$ git branch branchname
+By default this branch is a copy of the current branch (the one you were at when running the command) at HEAD. You can also create a copy that only includes changes up to a certain commit by adding the SHA of the commit:
+$ git branch branchname commit-SHA
+To list all existing branches use:
+git branch
+
+This also shows the branch you are currently on, marked with an asterisk next to the name.
+
+To delete a branch, use
+$ git branch -d branchname
