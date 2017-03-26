@@ -1,3 +1,8 @@
+install chocolte for windows
+
+@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
+
+
 git merge --abort is equivalent to git reset --merge when MERGE_HEAD is present.
 
 This will unstage all files you might have staged with git add:
