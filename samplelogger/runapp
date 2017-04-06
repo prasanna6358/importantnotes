@@ -1,0 +1,1 @@
+mvn  exec:java -Dexec.mainClass=com.sample.logs.App -Dlog4j.configuration=file:/home/prasanna/prasannagit/samplelogger/src/test/java/com/sample/log4j.properties
