@@ -1,0 +1,69 @@
+How to Work with LDAP Server?
+
+First you need to install openLDAP server in your local System then install phpldapadmin GUI
+
+To do the operation on LDAP server we are using phpldapadmin
+
+first thing you have to setup LDAP server with proper settings like domain name , organisation name and admin password etc.
+
+First create simple Organization units in LDAP server then ad users to the unit.
+
+if you know how to create organization units and creating user just follow the link :- https://www.youtube.com/watch?v=DM_UQVVVtoY
+
+
+if everything working fine then will go for java programming
+
+First thing we have to do that we have to configure basic requirements i.e
+We have to setUp the following things
+
+1). URL = "ldap://localhost"
+2). Connection = "simple"
+3). admindn = "cn=somename, dn=somename,dn=local //with which you have created the LDAP server, This is basically with what you are able to login i.e Login DN
+4). Password = "Password"
+
+Configure all the required things with HashTable like
+                      Hashtable<String, String> environment = new Hashtable<String, String>();
+                      environment.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
+                      environment.put(Context.PROVIDER_URL, url);
+                      environment.put(Context.OBJECT_FACTORIES,"java.naming.factory.object");
+                      environment.put(Context.SECURITY_AUTHENTICATION, connectionType);
+                      environment.put(Context.SECURITY_PRINCIPAL, adminDN);
+                      environment.put(Context.SECURITY_CREDENTIALS, password);
+
+ and then             DirContext ctx = new InitialDirContext(environment);
+
+First do the basic opeartion of LDAP server opeartion lookUp(String lookupDNname )
+
+And add a parameter for this operation to give the i/p as dn wether it is exists r not.
+
+if the spacified dn exists it will give the class name as LdapCtx else it will give you error message as object does not exist.
+
+then come to the second operation i.e createEntry(String entryDN,Attributes attributes)
+
+Give the correct entryDn otherwise you will get error as InvalidNameException
+
+If you are giving the  attributes as null then also you will get the error.
+
+and give the required attributes i.e
+         Attribute cn = new BasicAttribute("cn", "john kumar");
+        Attribute givenName = new BasicAttribute("givenname", "john");
+        Attribute sn = new BasicAttribute("sn","kumar");
+        Attribute objectclass = new BasicAttribute("objectclass", "posixAccount");
+        Attribute objectStructuralclass = new BasicAttribute("objectclass", "inetOrgPerson");
+
+ Above are the required attributes if you want you can give more attributes
+
+ we are adding this attributes to this thing => Attributes attr = new BasicAttributes(true);
+
+                    attr.put(cn);
+                    attr.put(givenName);
+                    attr.put(sn);
+                    attr.put(objectclass);
+                    attr.put(objectStructuralclass);
+
+then call the method ctx.CreatesubContext(entryDN, attributes);
+
+if everything working fine it will create the new entry with the metioned entryDn and with the attributes
+if the mentioned entryDN already exists in the LDAP server then it will show the error as entry already Exists.
+
+
