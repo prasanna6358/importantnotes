@@ -33,3 +33,22 @@ try (Connection connection = DriverManager.getConnection(url, username, password
 }
 
 create user in ORACLE and Giving permissions
+
+after installation of Oracle database connect to the databse using
+use the command sqlplus/nolog tyhen after
+SQL>command: connect sys as sysdba 
+it will ask for password give the password which you have given at the time of installation
+
+Now create user and grant permissions
+
+CREATE USER Prasanna IDENTIFIED BY Password;
+
+GRANT CONNECT TO prasanna;
+
+GRANT CONNECT, RESOURCE, DBA TO prasanna;
+
+GRANT CREATE SESSION GRANT ANY PRIVILEGE TO prasanna;
+
+GRANT UNLIMITED TABLESPACE TO prasanna;
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON schema.books TO prasanna;
