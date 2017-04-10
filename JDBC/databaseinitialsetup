@@ -54,3 +54,6 @@ GRANT UNLIMITED TABLESPACE TO prasanna;
 GRANT SELECT, INSERT, UPDATE, DELETE ON schema.books TO prasanna;
 
 grant all privilege to prasanna;
+
+
+link [http://meandmyubuntulinux.blogspot.in/2017/04/command-line-tricks.html]
