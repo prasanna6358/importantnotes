@@ -1,0 +1,35 @@
+http://stackoverflow.com/questions/2839321/connect-java-to-a-mysql-database/2840358#2840358
+
+if u want to start MYSQL form command Line:sudo mysql -uroot -p
+
+create user in MYSQL and Giving permissions
+
+Create a database in MySQL. Let's create a database javabase. You of course want World Domination, so let's use UTF-8 as well.
+
+CREATE DATABASE javabase DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+Create an user for Java and grant it access. Simply because using root is a bad practice.
+
+CREATE USER 'java'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL ON javabase.* TO 'java'@'localhost' IDENTIFIED BY 'password';
+
+Yes, java is the username and password is the password here.
+
+Determine the JDBC URL. To connect the MySQL database using Java you need an JDBC URL in the following syntax:
+
+jdbc:mysql://hostname:port/databasename
+
+sample Programme
+String url = "jdbc:mysql://localhost:3306/javabase";
+String username = "java";
+String password = "password";
+
+System.out.println("Connecting database...");
+
+try (Connection connection = DriverManager.getConnection(url, username, password)) {
+    System.out.println("Database connected!");
+} catch (SQLException e) {
+    throw new IllegalStateException("Cannot connect the database!", e);
+}
+
+create user in ORACLE and Giving permissions
