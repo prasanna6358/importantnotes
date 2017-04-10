@@ -52,3 +52,5 @@ GRANT CREATE SESSION GRANT ANY PRIVILEGE TO prasanna;
 GRANT UNLIMITED TABLESPACE TO prasanna;
 
 GRANT SELECT, INSERT, UPDATE, DELETE ON schema.books TO prasanna;
+
+grant all privilege to prasanna;
