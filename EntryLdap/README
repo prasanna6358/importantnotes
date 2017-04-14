@@ -8,7 +8,7 @@ first thing you have to setup LDAP server with proper settings like domain name 
 
 First create simple Organization units in LDAP server then ad users to the unit.
 
-if you know how to create organization units and creating user just follow the link :- https://www.youtube.com/watch?v=DM_UQVVVtoY
+if you know dont know to create organization units and creating user just follow the link :- https://www.youtube.com/watch?v=DM_UQVVVtoY
 
 
 if everything working fine then will go for java programming
