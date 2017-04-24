@@ -1,0 +1,72 @@
+docker run -it --privileged mycentosimage bash
+
+https://www.unixmen.com/install-openldap-in-ubuntu-15-10-and-debian-8/
+
+How to install OPENLDAP SERVER?
+
+OpenLDAP includes:
+    slapd – stand-alone LDAP daemon (server)
+    libraries implementing the LDAP protocol, and utilities, tools, and sample clients.
+    
+first we have to update  package  "apt-get update"
+
+place the command  "apt-get install slapd ldap-utils" to install openldap and then press enter
+
+it will ask administrator password | enter preferred password and remember this password to login to LDAP server
+
+Enter confirm password as same password
+
+Configure OpenLDAP
+
+Enter the command "dpkg-reconfigure slapd"
+
+The following screen should appear with message "omit openldap server configuration". Select “No” and press Enter.
+
+Enter the DNS domain name. what ever tou want ex: "mulesoft.local" ex:"mulesoft.com"
+
+Enter the Organization name : ex: (i.e your company name). ex:"Mulesoft"
+
+Enter the LDAP admin password which you created in the earlier step. press enter
+
+Re-enter the password.
+
+Select the backend database. will go with defaults.
+
+Select whether you want to delete the database automatically or keep it when slapd is removed. 
+Here we want to keep my old database, so will clicked No.
+
+Select Yes to move old database. yes
+
+Select No and Press Enter."Allow ldapv2 protocol"  choose "No"
+
+Everything is completed.......will do little test wether it installed r not
+
+ldapsearch -x   --------->press enter
+if you are getting this type of message then tou have to start a service that is slapd
+ ldap_sasl_bind(SIMPLE): Can't contact LDAP server (-1)
+
+to start slapd place this command and enter: "service slapd start"
+
+then it is all working fine 
+
+
+to create a static ip container follow the commands
+
+docker network create --subnet=172.18.0.0/16(format) anyname(subnetName)
+command:"docker network create --subnet=172.18.0.0/16 mysubnet"
+sudo docker network create --subnet=172.19.0.0/20 adminsubnet
+
+Then run image that will create docker container with specified name:
+
+ sudo docker run --net (subnetName) --name=staticipcntnr(containerName)  --ip 172.18.0.22(static ip address) -it dockergedit(ImageName)
+ Command: "sudo docker run --net mysubnet --name=staticipcntnr  --ip 172.18.0.22 -it ubuntu"
+ 
+ sudo docker run --net adminsubnet --privileged --name=sadmincntnr  --ip 172.19.0.11 -it dockergedit======With previlized mode
+ 
+ sudo docker run --net adminsubnet --privileged --name=prasanna17219019  --ip 172.19.0.19 -it dockergvim
+ 
+ to get the ipaddress of a container:
+ sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}' containerID
+
+Thanks,
+Prasanna kumar billa

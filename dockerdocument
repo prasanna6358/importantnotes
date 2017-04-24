@@ -1,0 +1,79 @@
+Export classpath in Linux:export CLASSPATH=".:/somewhere/A.jar:/elsewhere/B.jar"
+create a docker file
+then run command from that directory
+
+docker build -t ImageName . ======> . is compulsory
+
+we have to run this image this results in created container
+
+sudo docker run -it --name=containername(you can give your own name) imageName bash
+
+Then after u have to start/its already started
+
+then u have to run by sudo exec -i containername bash
+
+
+we can ssh to this container by using portnumber 
+ssh -X root@ipaddress of that container
+
+to create a static ip container follow the commands
+
+docker network create --subnet=172.18.0.0/16(format) anyname(subnetName)
+command:"docker network create --subnet=172.18.0.0/16 mysubnet"
+sudo docker network create --subnet=172.19.0.0/20 adminsubnet
+
+Then run image that will create docker container with specified name:
+
+ sudo docker run --net (subnetName) --name=staticipcntnr(containerName)  --ip 172.18.0.22(static ip address) -it dockergedit(ImageName)
+ Command: "sudo docker run --net mysubnet --name=staticipcntnr  --ip 172.18.0.22 -it ubuntu"
+ 
+ sudo docker run --net adminsubnet --privileged --name=sadmincntnr  --ip 172.19.0.11 -it dockergedit======With previlized mode
+ 
+ sudo docker run --net adminsubnet --privileged --name=prasanna17219019  --ip 172.19.0.19 -it dockergvim
+ 
+ to get the ipaddress of a container:
+sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}' containerID
+
+
+if u want to push ur docker image first u have to tag the image then after u can push to docker hub of ur account
+
+command :sudo docker tag imagename accountusername/Imagenamewhateveruwant
+
+command Name:sudo docker tag nginx prasanna/firstimage
+
+then push: sudo docker push prasanna/firstimage
+
+
+we can create docker image from docker container 
+when we run an Image an container is created and it it is running mode
+we can do any changes if we want on that container and Now
+we can create an Image from this container it is very simple
+
+command: sudo docker commit containerName NewImageName
+
+to rename a docker image just tag that image with some other name but it may effect to your docker hub by changing the name
+
+sudo docker tag ImageID newImageName
+
+u can skip sudo by logged in as super user
+
+type command as:"sudo su" then u no need to use everytime as sudo
+
+if u want to change the permissions do this
+
+sudo chown prasanna:prasanna cp2admin.tar
+
+u an run a container in admin mode:
+
+ docker run -it --cap-add=NET_ADMIN softwarecp2.2
+
+docker export a container
+
+sudo docker export cp2admin  > cp2admin.tar
+
+to dalay internet speed for 10milliseconds
+tc qdisc add dev eth0 root netem delay 10000ms
+
+u can delete dalay ur interspeed of above with name eth0
+sudo tc qdisc del dev eth0 root netem
+https://jvns.ca/blog/2017/04/01/slow-down-your-internet-with-tc/
