@@ -1,0 +1,16 @@
+How to config a JSP file in web.xml?
+Declare the following tags in web.xml against your jsp
+
+<servlet>
+<servlet-name>myjsp</servlet-name>
+<jsp-file>/myjsp.jsp</jsp-file>
+<init-param>
+<param-name>hello</param-name>
+<param-value>test</param-value>
+</init-param>
+</servlet>
+ 
+<servlet-mapping>
+<servlet-name>myjsp</servlet-name>
+<url-pattern>/myjsp</url-pattern>
+</servlet-mapping>
