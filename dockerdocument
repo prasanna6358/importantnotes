@@ -1,4 +1,7 @@
 Export classpath in Linux:export CLASSPATH=".:/somewhere/A.jar:/elsewhere/B.jar"
+
+Follow docker installation steps from the following link:https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04
+
 create a docker file
 then run command from that directory
 
