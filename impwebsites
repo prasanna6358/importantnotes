@@ -4,6 +4,10 @@ https://www.techonthenet.com
 tutorialspoint.com
 mykong.com
 http://gerardnico.com
+javatpoint.com
+javapapers.com
+http://www.xyzws.com
+
 
 java -Xdebug -Xrunjdwp:transport=dt_socket,server=y,address=6000 HelloWorld
 
