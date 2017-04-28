@@ -1,3 +1,38 @@
+for docker installation use the below link:
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04
+
+command1:sudo apt-get update
+
+command2:sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+
+command3:sudo apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'
+
+command4:sudo apt-get update
+
+command5:apt-cache policy docker-engine
+
+
+You should see output similar to the follow:
+Output of apt-cache policy docker-engine
+
+docker-engine:
+  Installed: (none)
+  Candidate: 1.11.1-0~xenial
+  Version table:
+     1.11.1-0~xenial 500
+        500 https://apt.dockerproject.org/repo ubuntu-xenial/main amd64 Packages
+     1.11.0-0~xenial 500
+        500 https://apt.dockerproject.org/repo ubuntu-xenial/main amd64 Packages
+
+
+Finally, install Docker:
+
+command6:sudo apt-get install -y docker-engine
+
+check the status of Docker:
+command7:sudo systemctl status docker
+
+
 Export classpath in Linux:export CLASSPATH=".:/somewhere/A.jar:/elsewhere/B.jar"
 
 Follow docker installation steps from the following link:https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04
