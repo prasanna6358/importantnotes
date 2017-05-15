@@ -1,0 +1,1 @@
+create table user(id int NOT NULL AUTO_INCREMENT,Name varchar(50),Password varchar(50),Email varchar(50),Country varchar(50), PRIMARY KEY (id));
