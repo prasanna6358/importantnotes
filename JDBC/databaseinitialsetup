@@ -19,6 +19,9 @@ Determine the JDBC URL. To connect the MySQL database using Java you need an JDB
 
 jdbc:mysql://hostname:port/databasename
 
+ String driver = "com.mysql.jdbc.Driver";
+String url = "jdbc:mysql://localhost:3306/billa";
+
 sample Programme
 String url = "jdbc:mysql://localhost:3306/javabase";
 String username = "java";
