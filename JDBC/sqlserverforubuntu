@@ -1,0 +1,100 @@
+	
+This answer covers installing MSSQL Server and Tools for any 16.04 system. It does not cover the Docker solution to getting MSSQL Server on a system. A separate answer will be written for MSSQL Server via Docker installation option for SQL Server.
+There are a couple different components here in packages from Microsoft repositories only.
+
+mssql-server - Microsoft SQL Server for Linux Preview
+mssql-tools - sqlcmd, etc. commands to interact with MSSQL Server.
+There are some evil caveats here:
+
+You must have 16.04 for all components; it does NOT work on older versions.
+At the moment, there are only 64-bit versions of the packages available. You will not be able to run mssql-server and possibly not the tools either unless you are on 64-bit systems.
+All commands below are from Microsoft's suggested steps. I do not suggest using some of these commands outside of following these steps exactly, due to the nature of security risks that some of the procedures here introduce (such as logging into a superuser shell).
+mssql-server installation steps (source)
+
+These steps cover setting up MS SQL Server for Linux Public Preview. This and the Docker method are the two methods for getting MSSQL Server for Linux set up.
+
+Caveats:
+
+You need to have a 64-bit system for MSSQL Server.
+You need at least 4GB of RAM on the system for MSSQL Server to install.
+You must have Ubuntu 16.04 for this, there are currently no other versions on their repository servers.
+To install the mssql-server Package on Ubuntu, follow these steps:
+
+Enter superuser mode.
+sudo su
+Import the public repository GPG keys:
+curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+Register the Microsoft SQL Server Ubuntu repository:
+curl https://packages.microsoft.com/config/ubuntu/16.04/mssql-server.list > /etc/apt/sources.list.d/mssql-server.list
+Exit superuser mode.
+exit
+Run the following commands to install SQL Server:
+sudo apt-get update
+sudo apt-get install -y mssql-server
+After the package installation finishes, run the configuration script and follow the prompts.
+sudo /opt/mssql/bin/sqlservr-setup
+Once the configuration is done, verify that the service is running:
+systemctl status mssql-server
+mssql-tools Installation Steps (source)
+
+This section covers setting up of mssql-tools which includes the sqlcmd command. These steps are needed for any systems in which you wish to use the sqlcmd command or other Microsoft-originating utilities on Linux to interact with an MSSQL Server.
+
+(This is not required for other Python libraries for interacting with MSSQL, or other utilities such as DataGrip which can interact with servers, etc., which do not need the mssql-tools pacakge to operate.)
+
+Caveats:
+
+I have not found a version of this for non-64bit systems. You may need a 64bit system to make these tools work.
+You can only use tools on 16.04 currently.
+Enter Superuser Mode
+sudo su
+Import the public repository GPG keys:
+curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+Register the Microsoft Ubuntu repository:
+curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > /etc/apt/sources.list.d/msprod.list
+Exit superuser mode:
+exit
+Update the sources list and run the installation command:
+sudo apt-get update
+sudo apt-get install mssql-tools
+
+
+You can start SQL-Server with:
+
+systemctl start mssql-server
+You can stop SQL-Server with:
+
+systemctl stop mssql-server
+To see its status:
+
+systemctl status mssql-server
+To start sql-server at boot-time:
+
+systemctl enable mssql-server
+To disable SQL-Server-start at boot-time:
+
+systemctl disable mssql-server
+
+sqlcmd -S localhost -U SA -P 'YourPasswordHere'
+CREATE DATABASE contoso
+exit
+And to permanently open port 1433 (sql-server default-port)
+
+iptables -A INPUT -p tcp --dport 1433 -j ACCEPT
+sudo apt-get install iptables-persistent
+sudo netfilter-persistent save
+sudo netfilter-persistent reload
+or if you use ufw, you can do the same by typing less with
+
+ufw allow 1433/tcp
+See also firewall-persistence and this
+
+For Red Hat (firewalld):
+
+firewall-cmd --add-port=1433/tcp --permanent
+firewall-cmd --reload
+
+
+https://askubuntu.com/questions/850957/how-do-i-install-mssql-server-and-or-tools-for-linux-on-16-04
+
+
+https://askubuntu.com/questions/90858/can-i-run-sql-server-on-ubuntu
