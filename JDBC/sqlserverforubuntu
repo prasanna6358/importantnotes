@@ -98,3 +98,48 @@ https://askubuntu.com/questions/850957/how-do-i-install-mssql-server-and-or-tool
 
 
 https://askubuntu.com/questions/90858/can-i-run-sql-server-on-ubuntu
+
+
+https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-connect-and-query-sqlcmd
+
+sqlcmd -S localhost -U SA -P '<YourPassword>'
+
+sqlcmd -S 192.555.5.555 -U SA -P '<YourPassword>'
+SELECT Name from sys.Databases;
+GO
+Create a database using the SQL Server default settings.
+SQL
+
+Copy
+CREATE DATABASE testdb;
+GO
+Use the database:
+SQL
+
+Copy
+USE testdb;
+GO
+Create a table in the current database:
+SQL
+
+Copy
+CREATE TABLE inventory (id INT, name NVARCHAR(50), quantity INT);
+GO
+Insert data into the new table:
+SQL
+
+Copy
+INSERT INTO inventory VALUES (1, 'banana', 150);
+INSERT INTO inventory VALUES (2, 'orange', 154);
+GO
+Select from the table:
+SQL
+
+Copy
+SELECT * FROM inventory WHERE quantity > 152;
+GO
+To end your sqlcmd session, type QUIT.
+SQL
+
+Copy
+QUIT
