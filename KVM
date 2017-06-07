@@ -1,0 +1,78 @@
+https://www.cyberciti.biz/faq/how-to-install-kvm-on-ubuntu-linux-14-04/
+
+What is a hypervisor?
+
+KVM is a hypervisor that creates and run virtual machines. 
+A server on which a hypervisor is running is called as a host machine. 
+Each virtual machine is referred to as a guest machine. Using KVM, you can run multiple operating systems
+such as CentOS, OpenBSD, FreeBSD, MS-Windows running unmodified.
+
+Steps for installing KVM on Ubuntu Linux 14.04 LTS
+
+The host server located in the remote data center and it is a headless server.
+All commands in this tutorial typed over the ssh based session.
+You need a vnc client to install the guest operating system.
+In this tutorial, you will learn how to install KVM software on Ubuntu and use KVM to setup your first guest VM.
+Find out if server is capable of running hardware accelerated KVM vm
+
+You need to use the kvm-ok command to determine if the server can host hardware accelerated KVM virtual machines. First install cpu-checker package using the following apt-get command:
+$ sudo apt-get install cpu-checker
+
+Next, run the following command:
+$ sudo kvm-ok
+
+Sample outputs:
+INFO: /dev/kvm exists
+KVM acceleration can be used
+Install kvm on Ubuntu Linux
+
+Type the following apt-get command to install kvm and related software:
+$ sudo apt-get install qemu-kvm libvirt-bin virtinst bridge-utils
+
+Default configuration locations
+
+Default directory: /var/lib/libvirt/
+ISO images for installation: /var/lib/libvirt/boot/
+VM installation directory: /var/lib/libvirt/images/
+Libvirt configuration directory for LVM/LXC/qemu: /etc/libvirt/
+
+
+
+More about the default networking for VM
+
+The default networking is called ‘default’. To list networks, enter:
+$ sudo virsh net-list
+
+For network information, enter:
+$ sudo virsh net-info default
+
+Sample outputs:
+
+Name:           default
+UUID:           1c0abaa3-8d17-45b5-85e9-c0d48cec94f9
+Active:         yes
+Persistent:     yes
+Autostart:      yes
+Bridge:         virbr0
+
+
+To dump network information in XML format, enter:
+$ sudo virsh net-dumpxml default
+
+Sample outputs:
+
+<network connections='1'>
+  <name>default</name>
+  <uuid>1c0abaa3-8d17-45b5-85e9-c0d48cec94f9</uuid>
+  <forward mode='nat'>
+    <nat>
+      <port start='1024' end='65535'/>
+    </nat>
+  </forward>
+  <bridge name='virbr0' stp='on' delay='0'/>
+  <ip address='192.168.122.1' netmask='255.255.255.0'>
+    <dhcp>
+      <range start='192.168.122.2' end='192.168.122.254'/>
+    </dhcp>
+  </ip>
+</network>
