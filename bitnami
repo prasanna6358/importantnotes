@@ -15,3 +15,12 @@ Bitnami virtual machine images, also known as virtual appliances, contain a mini
 installed and configured Bitnami application. Using a virtualization platform like VMware or VirtualBox, 
 you can simply start the Bitnami virtual machine image whenever you want to use the application. 
 This allows you to keep it completely isolated from software installed on your machine.
+
+
+Deploy Liferay to the Amazon Cloud in minutes
+
+Get automatic backups and one-click server restores
+
+Save customizations as templates to launch new servers
+
+Manage servers for multiple clients from one dashboard
