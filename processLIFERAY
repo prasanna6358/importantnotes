@@ -1,0 +1,28 @@
+First take SDK versions and Tomcat versions 
+
+Download Liferay eclipse with os specific https://web.liferay.com/downloads/liferay-projects/liferay-ide
+
+set the build.(systemname).properties  place this file in SDK /home/erperp/Liferay/liferay-plugins-sdk-6.2.0 like
+
+we have to set the build properties for tomcat
+
+add tomcat in eclipse 
+
+open tomcat in webbrowser
+
+configure one database mysql
+
+change the database name what u specified
+
+goto preferences and add sdk to eclipse
+
+go to create project create liferay project 
+
+and deploy in liferay tomcat deploy folder
+
+and that to delopy in liferat portal
+
+check result;
+
+
+
