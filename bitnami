@@ -1,0 +1,17 @@
+Bitnami is an app library for server software
+
+ Bitnami Installers
+
+Bitnami native installers automate the setup of a Bitnami-packaged application on Windows, 
+Mac OS X or Linux. Each installer includes all of the software necessary to run out of the box (the stack). 
+The process is simple, only requiring you to download, enter basic information and install. 
+Bitnami stacks are also completely self contained; they bundle all the required libraries, 
+databases, and runtimes and will not interfere with other software on your system.
+
+
+Bitnami Virtual Machines
+
+Bitnami virtual machine images, also known as virtual appliances, contain a minimal Linux operating system and a fully 
+installed and configured Bitnami application. Using a virtualization platform like VMware or VirtualBox, 
+you can simply start the Bitnami virtual machine image whenever you want to use the application. 
+This allows you to keep it completely isolated from software installed on your machine.
