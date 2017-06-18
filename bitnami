@@ -1,5 +1,14 @@
 Bitnami is an app library for server software
 
+Bitnami Cloud Hosting simplifies the process of deploying and managing open source and other applications on the Amazon Cloud. 
+It provides one-click deployment for a vast library of tested, ready-to-run applications, such as Alfresco, Drupal, SugarCRM, 
+Wordpress, Joomla!, Redmine and many others.
+
+Bitnami offers users automated application deployments of open source server apps from Oracle Cloud, 
+Amazon EC2 and Google Cloud Platform servers.[3]
+
+
+
  Bitnami Installers
 
 Bitnami native installers automate the setup of a Bitnami-packaged application on Windows, 
