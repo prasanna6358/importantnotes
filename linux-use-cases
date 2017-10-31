@@ -1,0 +1,11 @@
+Just follow these simple steps, with 2 commands only, for resetting root password in Ubuntu (provided that, you should know the machine login correctly):
+
+1. Open Terminal : Press Ctrl + Alt + T
+2. Type this command : sudo -i
+3. Enter your machine login password correctly for '[sudo] password for user:'
+4. Type this command : passwd root
+5. 'Enter new Unix Password :' xxxxxxxx
+6. 'Retype new Unix Password :' xxxxxxxx
+7. You'll see : 'passwd : password updated successfully.'
+
+Done!
